@@ -1,19 +1,23 @@
 /*jslint browser: true, vars: true, white: true, forin: true, indent: 4 */
-/*global define,require */
+/*global define,require,Modernizr */
 (function(){
     'use strict';
     
     var dependencies = [];
 
+    // requestAnimationFrame
+    if (!window.requestAnimationFrame) {
+        dependencies.push('./requestAnimationFrame.js');
+    }
     // JSON
     if (typeof window.JSON === 'undefined') {
-        dependencies.push('./json2');
+        dependencies.push('./json/json2');
     }
     // history
-    dependencies.push('./history.adapter.jquery');
-    dependencies.push('./history');
+    dependencies.push('./history/scripts/uncompressed/history.adapter.jquery');
+    dependencies.push('./history/scripts/uncompressed/history');
     if (!Modernizr.history) {
-        dependencies.push('./history.html4');
+        dependencies.push('./history/scripts/uncompressed/history.html4');
     }
 
     define(dependencies);
