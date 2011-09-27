@@ -1,5 +1,5 @@
 /*jslint browser: true, vars: true, white: true, forin: true, indent: 4 */
-/*global define,require */
+/*global define,require,Modernizr */
 (function(){
     'use strict';
     
@@ -7,13 +7,15 @@
 
     // JSON
     if (typeof window.JSON === 'undefined') {
-        dependencies.push('./json2');
+        dependencies.push('./json/json2');
     }
-    // history
-    dependencies.push('./history.adapter.jquery');
-    dependencies.push('./history');
+
+    // html5 history
+    dependencies.push('order!./history/scripts/compressed/history.adapter.jquery');
+    dependencies.push('order!./history/scripts/compressed/history');
+
     if (!Modernizr.history) {
-        dependencies.push('./history.html4');
+        dependencies.push('order!./history/scripts/compressed/history.html4');
     }
 
     define(dependencies);
