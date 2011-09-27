@@ -5,6 +5,10 @@
     
     var dependencies = [];
 
+    // requestAnimationFrame
+    if (!window.requestAnimationFrame) {
+        dependencies.push('./requestAnimationFrame.js');
+    }
     // JSON
     if (typeof window.JSON === 'undefined') {
         dependencies.push('./json/json2');
